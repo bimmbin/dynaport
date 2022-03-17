@@ -1,5 +1,21 @@
 <?php
  include 'header.php';
+
+
+$petch = new CreateView();
+$showProj = $petch->showProj('2');
+
+
+
+print_r($showProj);
+
+
+
+
+
+
+
+
 ?>
 
     <title>Document</title>
@@ -100,7 +116,7 @@
                         <li><a href="#contact">Contact</a></li>
                         <?php 
                             if (isset($_SESSION['userid'])) {
-                                echo "<li><a href='#' class='clickable'>Create</a></li>";
+                                echo "<li><a href='create.php' class='clickable'>Create</a></li>";
                                 echo "<li><a href='includes/logout.inc.php' class='clickable'>Logout</a></li>";
                             }
                             else {

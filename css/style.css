@@ -568,3 +568,42 @@ footer {
   border: none;
   cursor: pointer;
 }
+
+/* create */
+
+.create-container {
+  width: 100%;
+  height: fit-content;
+  background: #232323;
+  padding: 3rem;
+  margin-top: 2rem;
+}
+.create-container h1 {
+  margin-bottom: 1rem;
+}
+.create-1, .create-2 {
+  flex: 1 1 0px;
+}
+.create-1 {
+  padding-right: 3rem;
+}
+.create-container input[type=text] {
+  padding: 0.5rem;
+  color: black;
+  font-size: 18px;
+}
+.create-container input[type=file] {
+  margin-top: 0.5rem;
+  font-size: 20px;
+}
+.create-container p,  .create-container input[type=text], .create-container textarea {
+  width: 100%;
+}
+.create-container input[type=text], .create-container textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+.btn-create {
+  display: flex;
+  justify-content: flex-end;
+}
