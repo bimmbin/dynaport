@@ -12,13 +12,15 @@ if(isset($_POST["submit"])) {
     $github_url = $_POST["github_url"];
     $live_url = $_POST["live_url"];
     $proj_desc = $_POST["proj_desc"];
+    $preview = $_FILES["preview"];
     $files = $_FILES["files"];
     // Instantiate Contr class
     include 'inloader.inc.php';
-    $create = new CreateCtrl($proj_name, $tech_used, $app_feat, $github_url, $live_url, $proj_desc, $files);
+    $create = new CreateCtrl($proj_name, $tech_used, $app_feat, $github_url, $live_url, $proj_desc, $files, $preview);
     
     $create->insertProj();
     
+    // print_r($preview);
     
     // Going to back to front page
     header("location: ../index.php?error=none#projects");

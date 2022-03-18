@@ -28,6 +28,8 @@
                     <input type="text" name="github_url">
                     <p>Live Website Link</p>
                     <input type="text" name="live_url">
+                    <p>Front Preview Image</p>
+                    <input type="file" accept=".png, .jpg, .jpeg" name="preview">
                     <p>Upload preview images</p>
                     <input type="file" accept=".png, .jpg, .jpeg" name="files[]" multiple>
                 </div>

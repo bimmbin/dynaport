@@ -1,26 +1,17 @@
 <?php
  include 'header.php';
 
-
-$petch = new CreateView();
-$showProj = $petch->showProj('2');
-
-
-
-print_r($showProj);
-
-
-
-
-
+ $petch = new CreateView();
+ $showProj = $petch->showProj('project');
 
 
 
 ?>
 
     <title>Document</title>
+
 </head>
-<body class="body-hide">
+<body>
 
 <!-- header -------------->
 
@@ -28,15 +19,17 @@ print_r($showProj);
 
     <!-- .show -->
 
-    <div id="proj-name" class="show-proj">
-        <img class="btn-x" src="img/x.png" alt="">
+<?php foreach($showProj as $project) { ?>
+
+    <div id="proj<?php echo $project['project_id']; ?>" class="show-proj">
+        <img id="btn-x<?php echo $project['project_id']; ?>" class="btn-x" src="img/x.png" alt="">
         <div class="proj-container">
             <div class="container-2">
                 <div class="show-head">
-                    <p>Vuex with Firebase Auth</p>
+                    <p><?php echo $project['project_name']; ?></p>
                     <div class="proj-links">
-                        <a href="#">Github</a>
-                        <a href="#">View Live</a>
+                        <a href="<?php echo $project['github_url']; ?>">Github</a>
+                        <a href="<?php echo $project['live_url']; ?>">View Live</a>
                     </div>
                 </div>
                 <div class="owl-two owl-carousel owl-theme">
@@ -62,7 +55,7 @@ print_r($showProj);
                     </div>
                 </div>
                 <div class="show-info">
-                    <p class="proj-details">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac lobortis nunc, in feugiat magna. Nullam mauris nulla, tristique in porta interdum, sollicitudin quis nunc. Praesent a dolor dictum orci placerat interdum vel sit amet augue. Donec tincidunt libero quis lacus feugiat tincidunt. Nunc lacus metus, hendrerit eu lacinia sit amet, facilisis in arcu. Sed scelerisque, tortor sed dignissim cursus, massa erat dictum lacus, a accumsan justo nibh et tellus. Aenean ac eleifend est. Sed leo ante, rutrum sed odio in, tincidunt tincidunt erat.</p>
+                    <p class="proj-details"><?php echo $project['project_desc']; ?></p>
                     <div class="tech-used">
                         <h1>Technology Used</h1>
                         <div class="tech">
@@ -83,6 +76,8 @@ print_r($showProj);
             </div>
         </div>
     </div>
+
+<?php } ?>
 
       <!-- absolute pos -->
       <div class="bg-black"></div>
@@ -155,57 +150,25 @@ print_r($showProj);
             <div class="owl-container">
                 <div class="owl-one owl-carousel owl-theme">
                     
+                <?php foreach($showProj as $project) { ?>
+                    
                     <div class="item">
                         <div class="card">
-                            <img src="img/proj1.PNG" alt="">
+                            <img src="uploads/<?php echo $project['project_imgfeat']; ?>">
                             <div class="card-content">
-                                <p>Vuex with Firebase Auth</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac</p>
+                                <p><?php echo $project['project_name']; ?></p>
+                                <p><?php echo $project['project_desc']; ?></p>
                                 <div class="btn">
-                                    <button>View More Details</button>
+                                    <button id="proj-id<?php echo $project['project_id']; ?>">View More Details</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="item">
-                        <div class="card">
-                            <img src="img/proj1.PNG" alt="">
-                            <div class="card-content">
-                                <p>Vuex with Firebase Auth</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac</p>
-                                <div class="btn">
-                                    <button>View More Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <?php } ?>
+ 
 
-                    <div class="item">
-                        <div class="card">
-                            <img src="img/proj1.PNG" alt="">
-                            <div class="card-content">
-                                <p>Vuex with Firebase Auth</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac</p>
-                                <div class="btn">
-                                    <button>View More Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="item">
-                        <div class="card">
-                            <img src="img/proj1.PNG" alt="">
-                            <div class="card-content">
-                                <p>Vuex with Firebase Auth</p>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam vel neque consectetur, molestie leo ac</p>
-                                <div class="btn">
-                                    <button>View More Details</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
             </div>
@@ -335,12 +298,42 @@ print_r($showProj);
     <script>
 
 
-        // $( ".btn-x" ).click(function() {
-        //     $('#proj-name').hide();
-        //     $('body').toggleClass('body-hide');
-        // });
-        $('body').toggleClass('body-hide');
-        $('#proj-name').hide();
+        <?php foreach($showProj as $project) { ?>
+
+
+
+        $( "#proj-id<?php echo $project['project_id']; ?>" ).click(function() {
+            $("#proj<?php echo $project['project_id']; ?>").toggle();
+            $("body").toggleClass("body-hide");
+        });
+
+        $( "#btn-x<?php echo $project['project_id']; ?>" ).click(function() {
+            $("#proj<?php echo $project['project_id']; ?>").toggle();
+            $("body").toggleClass("body-hide");
+        });
+
+        <?php } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         $('.owl-one').owlCarousel({

@@ -6,7 +6,7 @@ class Create extends Dbh {
 
     
     protected function getProj($projName, $githubUrl) {
-        $sql = "SELECT project_id FROM project WHERE project_name = ? or github_url = ?;";
+        $sql = "SELECT project_id FROM project WHERE project_name = ? and github_url = ?;";
         $stmt = $this->connect()->prepare($sql);
 
 
@@ -22,18 +22,38 @@ class Create extends Dbh {
 
         return $projId;
     }
-    protected function setProj($projName, $githubUrl, $liveUrl, $projDesc) {
-        $sql = "INSERT INTO project(project_name, project_desc,
-        github_url, live_url) VALUES (?, ?, ?, ?);";
-        $stmt = $this->connect()->prepare($sql);
+    protected function setProj($projName, $githubUrl, $liveUrl, $projDesc, $preview) {
+
+       
+        $fileName = $preview['name'];
+        $fileTmpName = $preview['tmp_name'];
+    
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
+        $uniqueId = uniqid();
+    
+        $fileNameNew = $uniqueId.".".$fileActualExt;
+        $fileDestination = '../uploads/'.$fileNameNew;
+    
+    
+        if (move_uploaded_file($fileTmpName, $fileDestination)) {
+            if(!empty($fileNameNew)) {
+                $sql = "INSERT INTO project(project_name, project_desc,
+                github_url, live_url, project_imgfeat) VALUES (?, ?, ?, ?, ?);";
+                $stmt = $this->connect()->prepare($sql);
 
 
-        if(!$stmt->execute(array($projName, $projDesc, $githubUrl, $liveUrl))) {
-            $stmt = null;
-            header("location: ../create.php?error=stmtfailed");
-            exit();
+                if(!$stmt->execute(array($projName, $projDesc, $githubUrl, $liveUrl, $fileNameNew))) {
+                    $stmt = null;
+                    header("location: ../create.php?error=stmtfailed");
+                    exit();
+                }
+                $stmt = null;
+            } 
         }
-        $stmt = null;
+
+
+        
     }
 
     protected function setProjTech($projName, $projUrl, $techName) {
@@ -83,9 +103,9 @@ class Create extends Dbh {
         
             $fileExt = explode('.', $fileName);
             $fileActualExt = strtolower(end($fileExt));
+            $uniqueId = uniqid();
         
-        
-            $fileNameNew = $projId.$fileName.".".$fileActualExt;
+            $fileNameNew = $i.$projId.$uniqueId.".".$fileActualExt;
             $fileDestination = '../uploads/'.$fileNameNew;
         
         
@@ -111,14 +131,38 @@ class Create extends Dbh {
     }
 
 
-    protected function fetchEm($tbName) {
-        $sql = "SELECT * FROM projects WHERE id=?"; // SQL with parameters
-        $stmt = $this->connect()->prepare($sql); 
-        $stmt->bind_param("s", $tbName);
-        $stmt->execute();
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC); // get the mysqli result
-        $user = $result->fetch_assoc(); // fetch data   
 
-        return $result;
+    // Fetching ------------------------------------------------------------------------------------------
+
+    protected function fetchEm($tbName) {
+        $sql = "SELECT * FROM $tbName"; // SQL with parameters
+        $stmt = $this->connect()->prepare($sql); 
+        
+        
+        if(!$stmt->execute()) {
+            $stmt = null;
+            header("location: ../create.php?error=stmtfailed");
+            exit();
+        }
+
+        $proj_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $proj_id;
+    }
+
+    protected function fetchImg($colName, $tbName, $col_id) {
+        $sql = "SELECT $colName FROM $tbName WHERE project_id= ?"; // SQL with parameters
+        $stmt = $this->connect()->prepare($sql); 
+        
+        
+        if(!$stmt->execute(array($col_id))) {
+            $stmt = null;
+            header("location: ../create.php?error=stmtfailed");
+            exit();
+        }
+
+        $proj_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $proj_id;
     }
 }

@@ -125,6 +125,13 @@
         margin: 0 5px 0 0;
     }
 }
+@media (max-width: 800px) { 
+ 
+
+    .card img {
+        height: 45%;
+    }
+}
 @media (max-width: 720px) { 
  
 

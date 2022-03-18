@@ -10,14 +10,16 @@ class CreateCtrl extends Create {
     private $github_url;
     private $live_url;
     private $proj_desc;
+    private $preview;
     private $files;
 
 
-    public function __construct($proj_name, $tech_used, $app_feat, $github_url, $live_url, $proj_desc, $files) {
+    public function __construct($proj_name, $tech_used, $app_feat, $github_url, $live_url, $proj_desc, $files, $preview) {
         $this->proj_name = $proj_name;
         $this->github_url = $github_url;
         $this->live_url = $live_url;
         $this->proj_desc = $proj_desc;
+        $this->preview = $preview;
         $this->files = $files;
 
         $tech_arr = explode(", ",$tech_used);
@@ -40,7 +42,7 @@ class CreateCtrl extends Create {
              exit();
         }
 
-        $this->setProj($this->proj_name, $this->github_url, $this->live_url, $this->proj_desc, $this->tech_used, $this->app_feat);
+        $this->setProj($this->proj_name, $this->github_url, $this->live_url, $this->proj_desc, $this->preview);
         $this->setProjTech($this->proj_name, $this->github_url, $this->tech_used);
         $this->setProjFeat($this->proj_name, $this->github_url, $this->app_feat);
 
