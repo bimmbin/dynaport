@@ -3,7 +3,6 @@ const btnHome = document.querySelector('.logo');
 
 btnHome.addEventListener("click", () => {
     window.scrollTo({top: 0, behavior: 'smooth',})
-    menu.classList.remove('drop');
 });
 
 
@@ -11,7 +10,7 @@ window.addEventListener('scroll', function () {
 
 
     var scroll = window.pageYOffset;
-    console.log(scroll);
+    // console.log(scroll);
     if (scroll > 0){ 
         $( ".sfm" ).fadeOut();
     } else if (scroll == 0) {

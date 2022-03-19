@@ -237,7 +237,7 @@ section {
   height: 15px!important;
 }
 .owl-theme .owl-nav {
-  margin-top: 3rem!important;
+  margin-top: 2rem!important;
 }
 
 .page-Title {
@@ -295,6 +295,8 @@ section {
 .card p:nth-child(1) {
   font-size: 25px;
   font-weight: 600;
+  height: 30px;
+  overflow: hidden;
 }
 
 .card p:nth-child(2) {
@@ -481,7 +483,28 @@ footer {
   margin: 20px 0 0 5px;
   border-radius: 8px;
 }
+.edit {
+  display: flex;
+  margin-right: 2rem;
+}
+.proj-links {
+  display: flex;
+}
+.edit form input[type=submit] {
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 20px 0 0 5px;
+  border-radius: 8px;
+}
 
+.edit form:nth-child(2) input[type=submit] {
+  background: rgb(138, 0, 0);
+}
+.edit form:nth-child(1) input[type=submit] {
+  background: #F15A24;
+}
 .show-head {
   display: flex;
   justify-content: space-between;
@@ -491,10 +514,10 @@ footer {
 .show-head p {
   font-size: 30px;
 }
-.show-head a:nth-child(1) {
+.github {
   background: #444444;
 }
-.show-head a:nth-child(2) {
+.live {
   background: #F15A24;
 }
 
@@ -504,11 +527,11 @@ footer {
   padding: 2rem 2rem;
   background: black;
   border-radius: 10px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 .divs img {
   width: 100%;
-  height: 100%;
+  height: 600px;
   object-fit: cover;
 }
 

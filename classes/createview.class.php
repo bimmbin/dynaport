@@ -10,7 +10,7 @@ class CreateView extends Create {
         return $showEm;
     }
 
-    public function showImg($colName, $tbName, $col_id) {
+    public function showFetch($colName, $tbName, $col_id) {
         $showEm = $this->fetchImg($colName, $tbName, $col_id);
         return $showEm;
     }

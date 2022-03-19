@@ -19,7 +19,12 @@
 
     <!-- .show -->
 
-<?php foreach($showProj as $project) { ?>
+<?php foreach($showProj as $project) { 
+    
+    $showImg = $petch->showFetch('img_name','project_img', $project['project_id']);
+    $showTech = $petch->showFetch('tech_name','project_tech', $project['project_id']);
+    $showFeat = $petch->showFetch('feat_name','project_feat', $project['project_id']);
+    ?>
 
     <div id="proj<?php echo $project['project_id']; ?>" class="show-proj">
         <img id="btn-x<?php echo $project['project_id']; ?>" class="btn-x" src="img/x.png" alt="">
@@ -28,48 +33,55 @@
                 <div class="show-head">
                     <p><?php echo $project['project_name']; ?></p>
                     <div class="proj-links">
-                        <a href="<?php echo $project['github_url']; ?>">Github</a>
-                        <a href="<?php echo $project['live_url']; ?>">View Live</a>
+
+                        <?php if (isset($_SESSION['userid'])) { ?>
+                        <div class="edit">
+                            <form action="includes/edit.inc.php" method="post">
+                                <input type="submit" name="edit" value="Edit">
+                                <input type="hidden" name="editId" value="<?php echo $project['project_id']; ?>">
+                            </form>
+                            <form action="includes/delete.inc.php" method="post">
+                                <input type="submit" name="delete" value="Delete">
+                                <input type="hidden" name="delId" value="<?php echo $project['project_id']; ?>">
+                            </form>
+                        </div>
+                        <?php } ?>
+                        
+                        <a href="https:<?php echo $project['github_url']; ?>" class="github" target="_blank">Github</a>
+                        <a href="https:<?php echo $project['live_url']; ?>" class="live" target="_blank">View Live</a>
                     </div>
                 </div>
                 <div class="owl-two owl-carousel owl-theme">
+
+                <?php foreach($showImg as $images) { ?>
                     <div class="item">
                         <div class="divs">
-                            <img src="img/proj1.PNG" alt="">
+                            <img src="uploads/<?php echo $images['img_name']; ?>" alt="">
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="divs">
-                            <img src="img/proj1.PNG" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="divs">
-                            <img src="img/proj1.PNG" alt="">
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="divs">
-                            <img src="img/proj1.PNG" alt="">
-                        </div>
-                    </div>
+                <?php } ?>
+
                 </div>
                 <div class="show-info">
                     <p class="proj-details"><?php echo $project['project_desc']; ?></p>
                     <div class="tech-used">
                         <h1>Technology Used</h1>
                         <div class="tech">
-                            <p>HTML</p>
-                            <p>CSS</p>
-                            <p>Javascript</p>
-                            <p>PHP</p>
+
+                        <?php foreach($showTech as $tech) { ?>
+                            <p><?php echo $tech['tech_name']; ?></p>
+                        <?php } ?>
+
                         </div>
                     </div>
                     <div class="app-feat">
                         <h1>Application Features</h1>
                         <div class="feat">
-                            <p>LogIn System</p>
-                            <p>CRUD</p>
+
+                        <?php foreach($showFeat as $feat) { ?>
+                            <p><?php echo $feat['feat_name']; ?></p>
+                        <?php } ?>
+
                         </div>
                     </div>
                 </div>
@@ -91,7 +103,7 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="#" class="clickable">Login</a></li>
+            <li><a href="login.php" class="clickable">Login</a></li>
         </ul>
     </div>
 
@@ -116,7 +128,7 @@
                             }
                             else {
                                 echo "<li><a href='login.php' class='clickable'>Login</a></li>";
-                                echo "<li><a href='signup.php' class='clickable'>Sign Up</a></li>";
+                                // echo "<li><a href='signup.php' class='clickable'>Sign Up</a></li>";
                             }
                         ?>
                     </ul>
@@ -305,11 +317,17 @@
         $( "#proj-id<?php echo $project['project_id']; ?>" ).click(function() {
             $("#proj<?php echo $project['project_id']; ?>").toggle();
             $("body").toggleClass("body-hide");
+            if (window.matchMedia('(max-width: 1000px)').matches) {
+                $(".btn-nav").toggle();
+            }
         });
 
         $( "#btn-x<?php echo $project['project_id']; ?>" ).click(function() {
             $("#proj<?php echo $project['project_id']; ?>").toggle();
             $("body").toggleClass("body-hide");
+            if (window.matchMedia('(max-width: 1000px)').matches) {
+                $(".btn-nav").toggle();
+            }
         });
 
         <?php } ?>
