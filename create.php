@@ -14,7 +14,7 @@
     <div class="create-container">
         <form action="includes/create.inc.php" method="post" enctype="multipart/form-data">
             <h1>Create Project</h1>
-            <div class="flex">
+            <div class="flex-create">
                 <div class="create-1">
                     <p>Project Name</p>
                     <input type="text" name="proj_name">

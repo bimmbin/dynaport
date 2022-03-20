@@ -165,4 +165,20 @@ class Create extends Dbh {
 
         return $proj_id;
     }
+
+    protected function fetchSingleProject($tbName, $col_id) {
+        $sql = "SELECT * FROM $tbName WHERE project_id= ?"; // SQL with parameters
+        $stmt = $this->connect()->prepare($sql); 
+        
+        
+        if(!$stmt->execute(array($col_id))) {
+            $stmt = null;
+            header("location: ../create.php?error=stmtfailed");
+            exit();
+        }
+
+        $proj_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $proj_id;
+    }
 }

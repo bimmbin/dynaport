@@ -36,7 +36,7 @@
 
                         <?php if (isset($_SESSION['userid'])) { ?>
                         <div class="edit">
-                            <form action="includes/edit.inc.php" method="post">
+                            <form action="edit.php" method="post">
                                 <input type="submit" name="edit" value="Edit">
                                 <input type="hidden" name="editId" value="<?php echo $project['project_id']; ?>">
                             </form>
@@ -46,10 +46,12 @@
                             </form>
                         </div>
                         <?php } ?>
+                        <div class="links">
+                            <a href="https:<?php echo $project['github_url']; ?>" class="github" target="_blank">Github</a>
+                            <a href="https:<?php echo $project['live_url']; ?>" class="live" target="_blank">View Live</a>
+                        </div>
                         
-                        <a href="https:<?php echo $project['github_url']; ?>" class="github" target="_blank">Github</a>
-                        <a href="https:<?php echo $project['live_url']; ?>" class="live" target="_blank">View Live</a>
-                    </div>
+                     </div>
                 </div>
                 <div class="owl-two owl-carousel owl-theme">
 
@@ -103,7 +105,16 @@
             <li><a href="#projects">Projects</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li><a href="login.php" class="clickable">Login</a></li>
+            <?php 
+                if (isset($_SESSION['userid'])) {
+                    echo "<li><a href='create.php' class='clickable'>Create</a></li>";
+                    echo "<li><a href='includes/logout.inc.php' class='clickable'>Logout</a></li>";
+                }
+                else {
+                    echo "<li><a href='login.php' class='clickable'>Login</a></li>";
+                    // echo "<li><a href='signup.php' class='clickable'>Sign Up</a></li>";
+                }
+            ?>
         </ul>
     </div>
 

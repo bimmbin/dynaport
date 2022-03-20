@@ -14,4 +14,9 @@ class CreateView extends Create {
         $showEm = $this->fetchImg($colName, $tbName, $col_id);
         return $showEm;
     }
+
+    public function fetchSingleId($tbName, $col_id) {
+        $showEm = $this->fetchSingleProject($tbName, $col_id);
+        return $showEm;
+    }
 }

@@ -1,5 +1,5 @@
 <?php
-
+include_once '../includes/inloader.inc.php';
 
 class UpdateDel extends Dbh {
 
@@ -7,6 +7,9 @@ class UpdateDel extends Dbh {
     
     
     protected function delProj($projId) {
+
+
+
         $sql = "DELETE FROM project WHERE project_id = ?;";
         $stmt = $this->connect()->prepare($sql);
 
@@ -35,7 +38,36 @@ class UpdateDel extends Dbh {
                 exit();
             }
         }
+    }
 
+    protected function deleteImg($proj_id){
+
+        $fetchProj = new CreateView();
+
+        $projImages = $fetchProj->showFetch('img_name','project_img', $proj_id); //insidePreview img fetch
+
+        $projImagesThumb = $fetchProj->showFetch('project_imgfeat','project', $proj_id); //thumbnail img fetch
+
+        foreach ($projImages as $image) {
+            $path = "../uploads/".$image['img_name'];
+            unlink($path);
+        }
+
+
+        $pathView = "../uploads/".$projImagesThumb['0']['project_imgfeat'];
+        unlink($pathView);
+    }
+
+    protected function updateProj($tbName, $colName, $colVal, $projId) {
+        $sql = "UPDATE $tbName SET ? = '?' WHERE project_id = ?";
+        $stmt = $this->connect()->prepare($sql);
+
+
+        if(!$stmt->execute(array($colName, $colVal, $projId))) {
+            $stmt = null;
+            header("location: ../index.php?error=stmtfailed");
+            exit();
+        }
     }
 
 
