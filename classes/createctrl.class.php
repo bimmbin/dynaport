@@ -22,8 +22,8 @@ class CreateCtrl extends Create {
         $this->preview = $preview;
         $this->files = $files;
 
-        $tech_arr = explode(", ",$tech_used);
-        $feat_arr = explode(", ",$app_feat);
+        $tech_arr = explode("/",$tech_used);
+        $feat_arr = explode("/",$app_feat);
 
         $this->tech_used = $tech_arr;
         $this->app_feat = $feat_arr;

@@ -514,6 +514,7 @@ footer {
 }
 .show-head p {
   font-size: 30px;
+  width: 550px;
 }
 .github {
   background: #444444;

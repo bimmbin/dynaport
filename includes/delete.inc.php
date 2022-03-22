@@ -10,7 +10,7 @@ if(isset($_POST["delete"])) {
     // echo $proj_id;
     // Instantiate Contr class
     include 'inloader.inc.php';
-    $delete = new UpdateDelCtrl($proj_id);
+    $delete = new DeleteCtrl($proj_id);
     
     $delete->deleteThis();
     

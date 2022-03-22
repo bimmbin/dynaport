@@ -1,9 +1,11 @@
 <?php
  include 'header.php';
 
-
+ 
 
  if(isset($_POST["edit"])) {
+
+    include_once 'includes/functions.inc.php';
 
     // Grabbing the data
     $proj_id = $_POST["editId"];
@@ -17,12 +19,12 @@
     $editTech = $fetchProj->showFetch('tech_name','project_tech', $proj_id);
     $editFeat = $fetchProj->showFetch('feat_name','project_feat', $proj_id);
     
-    $techString = implode(", ",$editTech[0]); //assoc array to string conversion
-    $featString = implode(", ",$editFeat[0]);
 
-    $tech_used = str_replace(" ", ", ", $techString);
-    $feat_used = str_replace(" ", ", ", $featString);
-    // print_r($editProj);
+    $techString = implode_key("/", $editTech, "tech_name");
+    $featString = implode_key("/", $editFeat, "feat_name");
+
+
+    // echo $techString;
 ?>
 
     <title>Edit Project</title>
@@ -42,9 +44,9 @@
                     <p>Project Name</p>
                     <input type="text" name="proj_name" value="<?php echo $editProj['0']['project_name']; ?>">
                     <p>Tech Used</p>
-                    <textarea name="tech_used" id=""  rows="3"><?php echo $tech_used; ?></textarea>
+                    <textarea name="tech_used" id=""  rows="3"><?php echo $techString; ?></textarea>
                     <p>App Feature</p>
-                    <textarea name="app_feat" id=""  rows="3"><?php echo $feat_used; ?></textarea>
+                    <textarea name="app_feat" id=""  rows="3"><?php echo $featString; ?></textarea>
                 </div>
                 <div class="create-2">
                     <p>Github Repo Link</p>
@@ -62,7 +64,8 @@
                 <textarea name="proj_desc" id="" cols="30" rows="10"><?php echo $editProj['0']['project_desc']; ?></textarea>
             </div>
             <div class="btn-create">
-                <input class="clickable" type="submit" name="submit" value="Submit">
+                <input class="clickable" type="submit" name="update" value="Update">
+                <input type="hidden" name="update_id" value="<?php echo $proj_id; ?>">
             </div>
         </form>
     </div>

@@ -1,7 +1,7 @@
 <?php
 include_once '../includes/inloader.inc.php';
 
-class UpdateDel extends Dbh {
+class Delete extends Dbh {
 
 
     
@@ -56,18 +56,6 @@ class UpdateDel extends Dbh {
 
         $pathView = "../uploads/".$projImagesThumb['0']['project_imgfeat'];
         unlink($pathView);
-    }
-
-    protected function updateProj($tbName, $colName, $colVal, $projId) {
-        $sql = "UPDATE $tbName SET ? = '?' WHERE project_id = ?";
-        $stmt = $this->connect()->prepare($sql);
-
-
-        if(!$stmt->execute(array($colName, $colVal, $projId))) {
-            $stmt = null;
-            header("location: ../index.php?error=stmtfailed");
-            exit();
-        }
     }
 
 
