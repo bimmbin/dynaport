@@ -28,6 +28,8 @@ class Login extends Dbh {
 
         if($checkPwd == false) {
             $stmt = null;
+
+            // insert ip address here
             header("location: ../index.php?error=wrongpassword");
             exit();
         } else if ($checkPwd == true) {

@@ -15,14 +15,23 @@ if(isset($_POST["update"])) {
     $proj_desc = $_POST["proj_desc"];
     $preview = $_FILES["preview"];
     $files = $_FILES["files"];
+
+    // if (empty($files["name"][0])) {
+    //     echo "Variable 'a' is empty.<br>";
+    //   }  else if (!empty($files["name"][0])) {
+    //     echo "Variable 'a' is val.<br>";
+    //   } 
+
+    // print_r  ($files);
     // Instantiate Contr class
     include 'inloader.inc.php';
     $update = new UpdateCtrl($proj_name, $tech_used, $app_feat, $github_url, $live_url, $proj_desc, $files, $preview, $update_id);
     
+
     $update->updateProject();
     
-    // print_r($preview);
-    
+
+
     // Going to back to front page
     header("location: ../index.php?error=none#projects");
 

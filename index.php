@@ -8,7 +8,7 @@
 
 ?>
 
-    <title>Document</title>
+    <title>Vinrecs</title>
 
 </head>
 <body>
@@ -40,7 +40,7 @@
                                 <input type="submit" name="edit" value="Edit">
                                 <input type="hidden" name="editId" value="<?php echo $project['project_id']; ?>">
                             </form>
-                            <form action="includes/delete.inc.php" method="post">
+                            <form action="includes/delete.inc.php" id="del" method="post">
                                 <input type="submit" name="delete" value="Delete">
                                 <input type="hidden" name="delId" value="<?php echo $project['project_id']; ?>">
                             </form>
@@ -65,7 +65,7 @@
 
                 </div>
                 <div class="show-info">
-                    <p class="proj-details"><?php echo $project['project_desc']; ?></p>
+                    <pre class="proj-details"><?php echo $project['project_desc']; ?></pre>
                     <div class="tech-used">
                         <h1>Technology Used</h1>
                         <div class="tech">

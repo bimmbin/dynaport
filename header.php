@@ -11,6 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="img/titlelogo6.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="css/style.css?v=<? echo time(); ?>" />
     <link rel="stylesheet" type="text/css" href="css/media.css?v=<? echo time(); ?>" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=320, height=device-height, target-densitydpi=medium-dpi" />

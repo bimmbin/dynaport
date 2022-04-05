@@ -18,7 +18,7 @@ class Create extends Dbh {
 
         $proj_id = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        $projId = implode(', ', $proj_id[0]);
+        $projId = implode(', ', $proj_id[0]);  //array to string
 
         return $projId;
     }

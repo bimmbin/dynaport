@@ -143,7 +143,12 @@
         height: 477px;
     }
 }
-
+@media (max-width: 600px) { 
+ 
+    .show-head p {
+        width: 100%;
+    }
+}
 @media (max-width: 720px) { 
  
     .divs img {

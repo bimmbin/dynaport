@@ -44,7 +44,7 @@ class UpdateCtrl extends Update {
             header("location: ../create.php?error=emptyinput");
              exit();
         }
-        if(!empty($this->preview)) {
+        if(!empty($this->preview["name"])) {
             $this->updatePrevImg('project_imgfeat', 'project', $this->preview, $this->proj_id);
         }
         if(!empty($this->tech_used)) {
@@ -55,7 +55,7 @@ class UpdateCtrl extends Update {
             $this->deleteFeat($this->proj_id);
             $this->updateFeat($this->app_feat, $this->proj_id);
         }
-        if(!empty($this->files)) {
+        if(!empty($this->files["name"][0])) {
             $this->deleteImgData($this->proj_id);
             $this->deleteImg('img_name', 'project_img', $this->proj_id);
             $this->updateInsideImg($this->files, $this->proj_id);
