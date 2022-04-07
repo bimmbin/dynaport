@@ -19,7 +19,20 @@ class Login extends Dbh {
 
         if($stmt->rowCount() == 0) {
             $stmt = null;
-            header("location: ../index.php?error=usernotfound");
+
+            $ipadd = $_SERVER['REMOTE_ADDR'];
+
+            $sql = "INSERT INTO auth(ip_address) VALUES (?);";
+                $stmt = $this->connect()->prepare($sql);
+
+
+                if($stmt->execute(array($ipadd))) {
+                    $stmt = null;
+                    header("location: ../login.php?error=usernotfound");
+                    exit();
+                }
+
+
             exit();
         }
 
@@ -30,8 +43,17 @@ class Login extends Dbh {
             $stmt = null;
 
             // insert ip address here
-            header("location: ../index.php?error=wrongpassword");
-            exit();
+            $ipadd = $_SERVER['REMOTE_ADDR'];
+
+            $sql = "INSERT INTO auth(ip_address) VALUES (?);";
+                $stmt = $this->connect()->prepare($sql);
+
+
+                if($stmt->execute(array($ipadd))) {
+                    $stmt = null;
+                    header("location: ../login.php?error=wrongpassword");
+                    exit();
+                }
         } else if ($checkPwd == true) {
             $sql = "SELECT * FROM users WHERE users_username = ? or users_email = ? AND users_pwd = ?;";
             $stmt = $this->connect()->prepare($sql);

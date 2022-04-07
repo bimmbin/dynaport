@@ -30,9 +30,8 @@ class CreateCtrl extends Create {
     }
 
     // public function test() {
-
-
-    //     print_r($this->files["tmp_name"]);
+       
+        
     // }
 
     public function insertProj() {
