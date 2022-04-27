@@ -16,7 +16,7 @@ class Auth extends Dbh {
         }
     
         
-        if($stmt->rowCount() <= 7 || $stmt->rowCount() == 0) {
+        if($stmt->rowCount() <= 5 || $stmt->rowCount() == 0) {
             return true;
         } else {
             return false;
@@ -33,7 +33,7 @@ class Auth extends Dbh {
             exit();
         }
     
-        if($stmt->rowCount() > 7) {
+        if($stmt->rowCount() > 5) {
             return true;
         } else {
             return false;

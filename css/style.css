@@ -278,6 +278,7 @@ section {
   width: 450px;
   background-color: #2F2F2F;
   height: fit-content;
+  border-radius: 10px;
 }
 
 /* .card img, .card-content {
@@ -287,6 +288,7 @@ section {
   width: 100%;
   height: 250px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .btn {
@@ -541,7 +543,6 @@ footer {
 }
 .divs img {
   width: 100%;
-  height: 600px;
   object-fit: cover;
 }
 .show-info .proj-details {
