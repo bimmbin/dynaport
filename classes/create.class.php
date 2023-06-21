@@ -135,7 +135,7 @@ class Create extends Dbh {
     // Fetching ------------------------------------------------------------------------------------------
 
     protected function fetchEm($tbName) {
-        $sql = "SELECT * FROM $tbName"; // SQL with parameters
+        $sql = "SELECT * FROM $tbName ORDER BY project_id DESC"; // SQL with parameters
         $stmt = $this->connect()->prepare($sql); 
         
         

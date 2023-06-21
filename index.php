@@ -153,7 +153,7 @@
         <div class="container">
             <div class="main_page">
                 <div class="feature">
-                    <p>I'll help you build connections between your product and your target market.</p>
+                    <p>Discover my finest creations where innovation meets efficiency, bringing your ideas to life.</p>
                     <p>Full Stack Web Developer </br> ~ Arvin Gomez</p>
                 </div>
                 <div class="com_guy">
@@ -207,9 +207,11 @@
                 </div>
                 <div class="abt-info">
                     <h1>About</h1>
-                    <p>Hello! I am Arvin Gomez, a self-taught front-end web developer from Concepcion Tarlac and currently a second-year Computer Science undergraduate student. I enjoy building websites and learning new things at the same time.</p>
-                    <p>The Vin from Vinrecs came from my first name and recs means records which is a list of my documents</p>
-                    <p>At the moment, I'm currently working on personal projects in order to improve my skills and develop more great websites.</p>
+                    <p>Greetings! I'm Arvin Gomez, a passionate front-end web developer based in the vibrant city of Concepcion Tarlac. I take immense pride in announcing that I have recently completed my Bachelor of Science in Computer Science degree.</p>
+                    <p>Driven by my passion for website development, I immerse myself in the exciting world of coding while constantly seeking new avenues for growth and improvement.</p>
+                    <p>Vinrecs, my digital sanctuary, is an embodiment of my journey, combining the essence of my name with the concept of records, a reflection of my ever-evolving collection of remarkable projects.</p>
+                    <p>Join me on this incredible journey, and together, let's create exceptional web experiences that leave a lasting impact!</p>
+                    
                 </div>
             </div>
             <div class="abt-2 flex">
@@ -252,10 +254,10 @@
                 <div class="user-info">
                     <div class="social">
                         <h1>Social</h1>
-                        <p><a href="http://facebook.com/vinrecs" target="_blank" >Facebook</a></p>
-                        <p><a href="http://facebook.com/vinrecs" target="_blank" >Twitter</a></p>
-                        <p><a href="http://facebook.com/vinrecs" target="_blank" >Instagram</a></p>
-                        <p><a href="http://facebook.com/vinrecs" target="_blank" >LinkedIn</a></p>
+                        <p><a href="https://www.facebook.com/profile.php?id=100024911497343" target="_blank" >Facebook</a></p>
+                        <p><a href="#" target="_blank" >Twitter</a></p>
+                        <p><a href="#" target="_blank" >Instagram</a></p>
+                        <p><a href="https://www.linkedin.com/in/arvin-gomez-b51b91247/" target="_blank" >LinkedIn</a></p>
                     </div>
                     <div class="service">
                         <h1>Service</h1>
@@ -273,7 +275,7 @@
         </div>
     </footer>
     <div class="copyright">
-        <p>© 2021 Vinrecs. All rights reserved</p>
+        <p>© 2023 Vinrecs. All rights reserved</p>
     </div>
 
 
