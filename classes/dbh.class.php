@@ -6,16 +6,16 @@ class Dbh {
 
             // LocalHost
 
-            $username = "root";
-            $password = "";
-            $dbh = new PDO('mysql:host=localhost; dbname=portfolio_data', $username, $password);
+            // $username = "root";
+            // $password = "";
+            // $dbh = new PDO('mysql:host=localhost; dbname=portfolio_data', $username, $password);
             
 
             // LocalHost
 
-            // $username = "epiz_31287009";
-            // $password = "jzI9jKLDjRx1BDK";
-            // $dbh = new PDO('mysql:host=sql103.epizy.com; dbname=epiz_31287009_portfolio_data', $username, $password);
+            $username = "u280963573_bimbinn";
+            $password = "=lYx6b3+M";
+            $dbh = new PDO('mysql:host=localhost; dbname=u280963573_portfolio_data', $username, $password);
             
 
 
